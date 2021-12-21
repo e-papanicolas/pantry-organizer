@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Olive Oil",
+      "location": "pantry left top",
+      "date": "01/01/21"
+    },
+    {
+      "id": 2,
+      "name": "Dried Beans",
+      "location": "lower right cabinet",
+      "date": "04/13/2020"
+    },
+    {
+      "id": 3,
+      "name": "Himalayan Pink Salt",
+      "location": "Cabinet next to fridge",
+      "date": "11/01/21"
+    }
+  ]
+}
