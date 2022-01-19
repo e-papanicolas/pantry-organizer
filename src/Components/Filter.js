@@ -1,7 +1,5 @@
 function Filter() {
-    return (
-        <div>Filter here</div>
-    )
+  return <div>Filter here</div>;
 }
 
 export default Filter;

@@ -1,18 +1,20 @@
 import ItemCard from "./ItemCard";
 
-function ItemList({items, handleDelete}) {
-
-    const itemsArray = items.map(item => {
-        return (
-            <ItemCard key={item.id} name={item.name} date={item.date} id={item.id} location={item.location} handleDelete={handleDelete}/>
-        )
-    })
-
+function ItemList({ itemsToDisplay, handleDelete }) {
+  const itemsArray = itemsToDisplay.map((item) => {
     return (
-        <div>
-            {itemsArray}
-        </div>
-    )
+      <ItemCard
+        key={item.id}
+        name={item.name}
+        date={item.created_at}
+        id={item.id}
+        location={item.location_id}
+        handleDelete={handleDelete}
+      />
+    );
+  });
+
+  return <div>{itemsArray}</div>;
 }
 
 export default ItemList;
