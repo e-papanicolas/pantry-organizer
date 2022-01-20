@@ -86,7 +86,15 @@ function App() {
               />
             }
           />
-          <Route path="/locations" element={<Locations />} />
+          <Route
+            path="/locations"
+            element={
+              <Locations
+                locations={locations}
+                itemsToDisplay={itemsToDisplay}
+              />
+            }
+          />
           <Route
             path="/newitem"
             element={
