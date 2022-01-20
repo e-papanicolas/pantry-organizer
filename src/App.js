@@ -1,11 +1,14 @@
 import "./App.css";
-import Header from "./Components/Header";
-import NewItemForm from "./Components/NewItemForm";
+import NavBar from "./Components/NavBar";
 import PantryDisplay from "./Components/PantryDisplay";
 import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Login from "./Components/Login";
+import Locations from "./Components/Locations";
+import HomePage from "./Components/HomePage";
+import NewItemForm from "./Components/NewItemForm";
 
 function App() {
-  const [isOnPage, setPage] = useState(true);
   const [items, setItems] = useState([]);
   const [update, setUpdate] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,10 +37,6 @@ function App() {
     loadLocations();
   }, [update]);
 
-  function handlePageChange() {
-    setPage(!isOnPage);
-  }
-
   function handleSubmit(e, newItem) {
     e.preventDefault();
 
@@ -53,7 +52,6 @@ function App() {
         console.log(data);
         setUpdate(!update);
       });
-    setPage(true);
   }
 
   function handleDelete(id) {
@@ -73,22 +71,34 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Header handlePageChange={handlePageChange} isOnPage={isOnPage} />
-        {isOnPage ? (
-          <PantryDisplay
-            itemsToDisplay={itemsToDisplay}
-            handleDelete={handleDelete}
-            handleSearch={handleSearch}
-            setSearchTerm={setSearchTerm}
-            searchTerm={searchTerm}
+        <NavBar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/pantry"
+            element={
+              <PantryDisplay
+                itemsToDisplay={itemsToDisplay}
+                handleDelete={handleDelete}
+                handleSearch={handleSearch}
+                setSearchTerm={setSearchTerm}
+                searchTerm={searchTerm}
+              />
+            }
           />
-        ) : (
-          <NewItemForm
-            items={items}
-            handleSubmit={handleSubmit}
-            locations={locations}
+          <Route path="/locations" element={<Locations />} />
+          <Route
+            path="/newitem"
+            element={
+              <NewItemForm
+                items={items}
+                handleSubmit={handleSubmit}
+                locations={locations}
+              />
+            }
           />
-        )}
+          <Route path="/" element={<HomePage />} />
+        </Routes>
       </div>
     </div>
   );

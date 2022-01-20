@@ -1,6 +1,6 @@
-import Filter from "./Filter";
 import SearchBar from "./SearchBar";
 import ItemList from "./ItemList";
+import { Link } from "react-router-dom";
 
 function PantryDisplay({
   itemsToDisplay,
@@ -18,7 +18,8 @@ function PantryDisplay({
         handleSearch={handleSearch}
       />
       <br />
-      <Filter itemsToDisplay={itemsToDisplay} />
+      <Link to="/newitem">Add New Item</Link>
+      <br />
       <ItemList itemsToDisplay={itemsToDisplay} handleDelete={handleDelete} />
     </div>
   );
